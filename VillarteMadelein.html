@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contador</title>
+
+    <!-- Tipografía moderna -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600;700&display=swap">
+
+    <style>
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: linear-gradient(135deg, #1f6568, #16f1e6);
+            text-align: center;
+            padding: 40px;
+            color: #4d0dfd;
+            animation: fadeIn 1.5s ease-in-out;
+        }
+
+        /* Animación general */
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .titulo {
+            background: #16ffff;
+            color: #0d0af5;
+            padding: 15px;
+            border-radius: 10px;
+            width: 60%;
+            margin: auto;
+            box-shadow: 0 0 10px #00000022;
+            animation: fadeIn 2s ease;
+        }
+
+        .contenedor {
+            margin-top: 40px;
+            padding: 30px;
+            background: #38d6f1cc;
+            border-radius: 15px;
+            width: 300px;
+            margin-left: auto;
+            margin-right: auto;
+            box-shadow: 0 0 15px #00000022;
+            animation: fadeIn 2.5s ease;
+        }
+
+        .contador {
+            font-size: 60px;
+            font-weight: bold;
+            color: rgb(55, 24, 230);
+            transition: transform 0.2s;
+            text-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+        }
+
+        /* Animación suave cuando cambia */
+        .contador.animar {
+            transform: scale(1.2);
+            color: #fffb04;
+        }
+
+        .botones button {
+            font-size: 20px;
+            margin: 10px;
+            padding: 12px 22px;
+            border: none;
+            border-radius: 50px;
+            cursor: pointer;
+            background: rgba(255, 255, 255, 0.25);
+            color: rgb(46, 13, 230);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+            transition: 0.3s ease;
+            font-weight: 600;
+        }
+
+        .botones button:hover {
+            background: rgba(255, 255, 255, 0.4);
+            transform: translateY(-5px);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+        }
+
+        .botones button:active {
+            transform: translateY(-2px);
+        }
+
+        .nombre {
+            margin-top: 50px;
+            font-size: 20px;
+            background: #fff3c4;
+            color: #444;
+            padding: 10px;
+            width: 320px;
+            margin-left: auto;
+            margin-right: auto;
+            border-radius: 10px;
+            box-shadow: 0 0 10px #00000022;
+            animation: fadeIn 3s ease;
+        }
+        
+        .nombre b {
+            color: #2c0ce4;
+        }
+    </style>
+
+</head>
+<body>
+
+    <h1 class="titulo">CONTADOR INTERACTIVO</h1>
+
+    <div class="contenedor">
+        <p id="valorContador" class="contador">0</p>
+
+        <div class="botones">
+            <button onclick="decrementar()">-</button>
+            <button onclick="resetear()">Reset</button>
+            <button onclick="incrementar()">+</button>
+        </div>
+    </div>
+
+    <footer class="nombre">
+        Creado por: <b>VILLARTE ORDOÑEZ MADELEIN IRIS</b>
+    </footer>
+
+    <script>
+        let contador = 0;
+
+        function animarContador() {
+            const contadorElemento = document.getElementById("valorContador");
+            contadorElemento.classList.add("animar");
+            setTimeout(() => contadorElemento.classList.remove("animar"), 200);
+        }
+
+        function incrementar() {
+            contador += 2;
+            actualizar();
+        }
+
+        function decrementar() {
+            contador -= 2;
+            actualizar();
+        }
+
+        function resetear() {
+            contador = 0;
+            actualizar();
+        }
+
+        function actualizar() {
+            document.getElementById("valorContador").innerText = contador;
+            animarContador();
+        }
+    </script>
+
+</body>
+</html>
